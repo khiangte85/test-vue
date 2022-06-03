@@ -1,6 +1,7 @@
 <script setup>
 import { ref } from 'vue'
 
+const excludeKeys = ['price', 'id']
 const inputSize = ref(1)
 const outputArray = ref([])
 const inputObject = {
@@ -18,7 +19,7 @@ const generate = () => {
     let skus = []
     
     Object.keys(item).forEach((key, j) => {
-      if (key !== 'price' && key !== 'id') {
+      if (!excludeKeys.includes(key)) {
         skus.push(key.slice(0, 2).toLowerCase())
       }
 
